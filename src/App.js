@@ -1,7 +1,20 @@
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    setUsers([
+      {name: 'Bravo'},
+      {name: 'Tango'},
+      {name: 'Siera'},
+      {name: 'Kukaracha'},
+    ])
+    
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,6 +29,13 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React 1 2131
+          {
+            users.map((u, i) => (
+              <div key={`${u.name}-${i}`}>
+                <p>{u.name}</p>
+              </div>
+            ))
+          }
         </a>
       </header>
     </div>
